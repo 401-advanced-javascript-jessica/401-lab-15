@@ -10,8 +10,8 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const SINGLE_USE = !!process.env.SINGLE_USE;
-const TOKEN_EXPIRE_TIME = process.env.TOKEN_EXPIRE_TIME || '5m';
-const SECRET = process.env.SECRET || 'testSecret';
+const TOKEN_EXPIRE_TIME = process.env.TOKEN_EXPIRE_TIME;
+const SECRET = process.env.SECRET;
 
 const usedTokens = new Set();
 
@@ -119,7 +119,6 @@ users.methods.generateToken = function(type) {
   if(type !== 'key' && TOKEN_EXPIRE_TIME){
     signOptions = { expiresIn: TOKEN_EXPIRE_TIME};
   }
-  
   return jwt.sign(token, SECRET, signOptions);
 };
 

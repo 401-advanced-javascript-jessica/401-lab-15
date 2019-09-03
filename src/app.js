@@ -27,11 +27,12 @@ app.use(express.urlencoded({extended:true}));
 
 // Home Route
 app.get('/', (request, response) => {
-  response.send('App is up!');
+  response.status(200).send('App is up!');
 });
 
-app.use(apiRouter);
 app.use(authRouter);
+app.use(apiRouter);
+
 
 // Catchalls
 app.use('/*', notFound);
