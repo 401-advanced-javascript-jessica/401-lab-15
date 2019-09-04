@@ -15,8 +15,12 @@ let users = {
   user: {username: 'user', password: 'password', role: 'user'},
 };
 
-beforeAll(supergoose.startDB);
-afterAll(supergoose.stopDB);
+beforeAll( () =>{
+  supergoose.startDB();
+});
+afterAll( () => {
+  supergoose.stopDB();
+});
 
 describe('Auth Router', () => {
   

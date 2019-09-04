@@ -20,7 +20,9 @@ beforeAll(async (done) => {
   done();
 });
 
-afterAll(supergoose.stopDB);
+afterAll( () => {
+  supergoose.stopDB();
+});
 
 describe('Auth Middleware', () => {
   
@@ -49,7 +51,7 @@ describe('Auth Middleware', () => {
           expect(next).toHaveBeenCalledWith(errorObject);
         });
 
-    }); // it()
+    });
 
     it('logs in an admin user with the right credentials', () => {
 
